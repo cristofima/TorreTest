@@ -10,7 +10,7 @@ import { JobModel } from '../shared/models/job.model';
 export class TorreService {
 
   private searchTorreURL = "https://search.torre.co";
-  private queryString = "size=10&aggregate=false&offset=0";
+  private queryString = "size=20&aggregate=false&offset=0";
 
   constructor(private httpClient: HttpClient) { }
 

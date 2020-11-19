@@ -1,1 +1,32 @@
 <ion-searchbar  placeholder="Search jobs" (ionChange)="searchChange($event)"></ion-searchbar>
+<div *ngIf="isLoading" class="loading-container ion-text-center">
+    <ion-spinner></ion-spinner>
+</div>
+
+<ion-card *ngFor="let job of jobsList">
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="auto">
+          <ion-avatar>
+            <img *ngIf="job.organizations && job.organizations.length" title="job.organizations[0].name" [src]="job.organizations[0].picture">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="auto">
+          <p><strong>{{job.objective}}</strong></p>
+          <p>{{job.type}}</p>
+          <p>
+              <ng-container *ngIf="job.remote">Remote</ng-container>
+              <ng-container *ngIf="job.locations"> - {{job.locations}}</ng-container>
+          </p>
+          <ng-container *ngIf="job.compensation && job.compensation.visible && job.compensation.data">
+            {{job.compensation.data.currency}} {{job.compensation.data.minAmount}} - {{job.compensation.data.maxAmount}} {{job.compensation.data.periodicity}}
+          </ng-container>
+          <p>
+            <ion-chip *ngFor="let skill of job.skills">
+              <ion-label>{{skill.name}} {{skill.experience | experience}}</ion-label>
+            </ion-chip>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
