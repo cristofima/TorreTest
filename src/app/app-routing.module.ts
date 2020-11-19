@@ -10,6 +10,14 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  {
+    path: 'genoma/:username',
+    loadChildren: () => import('./ui/pages/genoma/genoma.module').then( m => m.GenomaPageModule)
+  },
+  {
+    path: 'job/:id',
+    loadChildren: () => import('./ui/pages/job/job.module').then( m => m.JobPageModule)
   }
 ];
 

@@ -3,7 +3,7 @@
     <ion-spinner></ion-spinner>
 </div>
 
-<ion-card *ngFor="let job of jobsList">
+<ion-card button *ngFor="let job of jobsList" (click)="goToJob(job.id)">
     <ion-card-content>
       <ion-row>
         <ion-col size="auto">
@@ -26,6 +26,7 @@
               <ion-label>{{skill.name}} {{skill.experience | experience}}</ion-label>
             </ion-chip>
           </p>
+          <app-countdown-clock *ngIf="job.deadline" [deadline]="job.deadline"></app-countdown-clock>
         </ion-col>
       </ion-row>
     </ion-card-content>

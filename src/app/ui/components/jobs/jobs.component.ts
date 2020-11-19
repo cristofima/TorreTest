@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TorreService } from 'src/app/services/torre.service';
 import { JobModel } from 'src/app/shared/models/job.model';
 
@@ -12,10 +13,14 @@ export class JobsComponent implements OnInit {
   jobsList: JobModel[] = [];
   isLoading: boolean;
 
-  constructor(private torreService: TorreService) { }
+  constructor(private router: Router, private torreService: TorreService) { }
 
   ngOnInit() {
    
+  }
+
+  goToJob(id: string){
+    this.router.navigate([`/job/${id}`]);
   }
 
   searchChange($event){

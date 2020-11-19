@@ -2,7 +2,8 @@
 <div *ngIf="isLoading" class="loading-container ion-text-center">
   <ion-spinner></ion-spinner>
 </div>
-<ion-card *ngFor="let person of peopleList">
+
+<ion-card button *ngFor="let person of peopleList" (click)="goToGenoma(person.username)">
   <ion-card-content>
     <ion-row>
       <ion-col size="auto">

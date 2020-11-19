@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { PersonModel } from '../shared/models/person.model';
 import { map } from 'rxjs/operators';
 import { JobModel } from '../shared/models/job.model';
+import { GenomaModel } from '../shared/models/genoma.mode';
+import { JobDetailModel } from '../shared/models/job-detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,11 @@ export class TorreService {
   constructor(private httpClient: HttpClient) { }
 
   getBio(userName: string){
-    return this.httpClient.get(`https://torre.bio/api/bios/${userName}`);
+    return this.httpClient.get<GenomaModel>(`https://torre.bio/api/bios/${userName}`);
   }
 
   getJob(jobId: string){
-    return this.httpClient.get(`https://torre.co/api/opportunities/${jobId}`);
+    return this.httpClient.get<JobDetailModel>(`https://torre.co/api/opportunities/${jobId}`);
   }
 
   searchPeople(name: string){

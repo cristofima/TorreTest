@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonModel } from 'src/app/shared/models/person.model';
 import { TorreService } from 'src/app/services/torre.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-people',
@@ -12,9 +13,13 @@ export class PeopleComponent implements OnInit {
   peopleList: PersonModel[] = [];
   isLoading: boolean;
 
-  constructor(private torreService: TorreService) { }
+  constructor(private router: Router, private torreService: TorreService) { }
 
   ngOnInit() {}
+
+  goToGenoma(username: string){
+    this.router.navigate([`/genoma/${username}`]);
+  }
 
   searchChange($event){
     let text = $event.detail.value;
