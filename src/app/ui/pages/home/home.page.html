@@ -17,7 +17,7 @@
   </ion-segment>
 
   <div [ngSwitch]="segment">
-    <app-people *ngSwitchCase="'people'" [ngStyle]="{'visibility': segment == 'people' ? 'visible' : 'hidden'}"></app-people>
-    <app-jobs *ngSwitchCase="'jobs'" [ngStyle]="{'visibility': segment == 'jobs' ? 'visible' : 'hidden'}"></app-jobs>
+    <app-people *ngSwitchCase="'people'"></app-people>
+    <app-jobs *ngSwitchCase="'jobs'"></app-jobs>
   </div>
 </ion-content>

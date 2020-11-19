@@ -17,7 +17,7 @@ export class TorreService {
   constructor(private httpClient: HttpClient) { }
 
   getBio(userName: string){
-    return this.httpClient.get<GenomaModel>(`https://torre.bio/api/bios/${userName}`);
+    return this.httpClient.get<GenomaModel>(`/apibio/bios/${userName}`);
   }
 
   getJob(jobId: string){
