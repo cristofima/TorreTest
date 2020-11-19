@@ -7,12 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { JobPageRoutingModule } from './job-routing.module';
 
 import { JobPage } from './job.page';
+import { ComponentsModule } from '../../components/components.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
+    SharedModule,
     JobPageRoutingModule
   ],
   declarations: [JobPage]

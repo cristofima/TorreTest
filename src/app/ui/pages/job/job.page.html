@@ -8,5 +8,33 @@
 </ion-header>
 
 <ion-content>
-
+  <ng-container *ngIf="jobDetail">
+    <h5>{{jobDetail.objective}}</h5>
+    <p *ngIf="jobDetail.agreement">{{jobDetail.agreement.type}}</p>
+    <ng-container *ngIf="jobDetail.strengths">
+      <p><strong>Strengths</strong></p>
+      <p>
+        <ion-chip *ngFor="let strength of jobDetail.strengths">
+          <ion-label>{{strength.name}} {{strength.experience | experience}}</ion-label>
+        </ion-chip>
+      </p>
+    </ng-container>
+    <ng-container *ngIf="jobDetail.place">
+      <p><strong>Location</strong></p>
+      <p>{{location}}</p>
+    </ng-container>
+    <ng-container *ngIf="jobDetail.compensation?.visible">
+      <p><strong>Salary</strong></p>
+      <p>{{jobDetail.compensation.currency}} {{jobDetail.compensation.minAmount}} - {{jobDetail.compensation.maxAmount}} {{jobDetail.compensation.periodicity}}</p>
+    </ng-container>
+    <ng-container *ngIf="detailsKeys">
+      <div *ngFor="let key of detailsKeys">
+        <p><strong>{{key}}</strong></p>
+        <ul>
+          <li *ngFor="let item of details[key]">{{item.content}}</li>
+        </ul>
+      </div>
+    </ng-container>
+    <app-countdown-clock *ngIf="jobDetail.deadline" [deadline]="jobDetail.deadline"></app-countdown-clock>
+  </ng-container>
 </ion-content>
