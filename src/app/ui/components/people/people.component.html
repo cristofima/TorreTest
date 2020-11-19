@@ -1,0 +1,31 @@
+<ion-searchbar placeholder="Search people" (ionChange)="searchChange($event)"></ion-searchbar>
+<div *ngIf="isLoading" class="loading-container ion-text-center">
+  <ion-spinner></ion-spinner>
+</div>
+<ion-card *ngFor="let person of peopleList">
+  <ion-card-content>
+    <ion-row>
+      <ion-col size="auto">
+        <ion-avatar>
+          <img *ngIf="person.picture" [src]="person.picture">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="auto">
+        <p><strong>{{person.name}}</strong></p>
+        <p>{{person.professionalHeadline}}</p>
+        <p>{{person.locationName}}</p>
+        <p>
+          <ion-chip *ngFor="let skill of person.skills">
+            <ion-label>{{skill.name}}</ion-label>
+          </ion-chip>
+        </p>
+        <ng-container *ngIf="person.openTo && person.openTo.length">
+          <p>Open to:</p>
+          <ul>
+            <li *ngFor="let ot of person.openTo">{{ot}} {{ot | compensation: person.compensations}}</li>
+          </ul>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

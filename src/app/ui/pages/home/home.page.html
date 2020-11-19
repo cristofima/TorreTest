@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Torre
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="people">
+      <ion-label>People</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="jobs">
+      <ion-label>Jobs</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="segment">
+    <app-people *ngSwitchCase="'people'" [ngStyle]="{'visibility': segment == 'people' ? 'visible' : 'hidden'}"></app-people>
+    <app-jobs *ngSwitchCase="'jobs'" [ngStyle]="{'visibility': segment == 'jobs' ? 'visible' : 'hidden'}"></app-jobs>
+  </div>
+</ion-content>
